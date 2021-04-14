@@ -5797,19 +5797,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Aaron\\.nuget\\packages\\": {}
+    "C:\\Users\\tobas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Aaron\\Documents\\EAD2CA2_EFCore_V1\\EAD2CA2_EFCore\\EAD2CA2_EFCore.csproj",
+      "projectUniqueName": "C:\\Users\\tobas\\OneDrive\\TUD T\\EAD2\\EAD2_CA2\\EAD2CA2_EFCore_V1\\EAD2CA2_EFCore\\EAD2CA2_EFCore.csproj",
       "projectName": "EAD2CA2_EFCore",
-      "projectPath": "C:\\Users\\Aaron\\Documents\\EAD2CA2_EFCore_V1\\EAD2CA2_EFCore\\EAD2CA2_EFCore.csproj",
-      "packagesPath": "C:\\Users\\Aaron\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Aaron\\Documents\\EAD2CA2_EFCore_V1\\EAD2CA2_EFCore\\obj\\",
+      "projectPath": "C:\\Users\\tobas\\OneDrive\\TUD T\\EAD2\\EAD2_CA2\\EAD2CA2_EFCore_V1\\EAD2CA2_EFCore\\EAD2CA2_EFCore.csproj",
+      "packagesPath": "C:\\Users\\tobas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tobas\\OneDrive\\TUD T\\EAD2\\EAD2_CA2\\EAD2CA2_EFCore_V1\\EAD2CA2_EFCore\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Aaron\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tobas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5865,7 +5865,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

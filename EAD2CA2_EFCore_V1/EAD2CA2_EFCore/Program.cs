@@ -40,7 +40,7 @@ namespace EAD2CA2_EFCore
         // c:\users\gary\ShopDB1.mdf
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=ShopDB2;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=tcp:sswd-db2.database.windows.net,1433;Initial Catalog=EAD2CA2;Persist Security Info=False;User ID=dbAdmin;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         public DbSet<Seller> Sellers { get; set; }
