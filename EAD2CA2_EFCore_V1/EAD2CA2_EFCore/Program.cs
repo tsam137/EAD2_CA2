@@ -12,7 +12,7 @@ namespace EAD2CA2_EFCore
         public string Location { get; set; }
         public int Rating { get; set; }
         public int ClothesSold { get; set; }
-        // navigation property to modules that Lecturer teaches, virtual => lazy loading  
+        // navigation property to clothes that Seller sells, virtual => lazy loading  
         public virtual ICollection<Clothe> Clothes { get; set; }
     }
 
@@ -27,20 +27,19 @@ namespace EAD2CA2_EFCore
         // foreign key property, null, follows convention for naming
         public int? SellerID { get; set; }
         // update relationship through this property, not through navigation property
-        // int would not allow null for LecturerID                 
+        // int would not allow null for SellerID                 
 
-        // navigation property to Lecturer for this module
+        // navigation property to Seller for this module
         public virtual Seller Seller { get; set; }           // virtual enables "lazy loading" 
     }
 
     // context class
     public class ShopContext : DbContext
     {
-        // localDB connection string
-        // c:\users\gary\ShopDB1.mdf
+        // Azure DB connection string
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=tcp:sswd-db2.database.windows.net,1433;Initial Catalog=EAD2CA2;Persist Security Info=False;User ID=dbAdmin;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            optionsBuilder.UseSqlServer(@"Server=tcp:sswd-db2.database.windows.net,1433;Initial Catalog=EAD2CA2;Persist Security Info=False;User ID=dbAdmin;Password=Ead2ca2137;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         public DbSet<Seller> Sellers { get; set; }
@@ -74,7 +73,7 @@ namespace EAD2CA2_EFCore
             }
         }
 
-        // prints the ID and name of each module and the name of the lecturer who teaches it
+        // prints the ID and name of each Clothes and the name of the Seller who sells it
         public void DoClotheQuery()
         {
             using ShopContext db = new ShopContext();
@@ -89,13 +88,13 @@ namespace EAD2CA2_EFCore
 
                 if (clothe.Seller != null)
                 {
-                    // Lecturer is a navigation property of type Lecturer
+                    // Seller is a navigation property of type clothes
                     Console.WriteLine(" solded by: " + clothe.Seller.Name);
                 }
             }
         }
 
-        // add a lecturer, modules being taught left null for moment
+        // add a Seller, clothes being sold left null for moment
         public void AddSeller(Seller seller)
         {
             using ShopContext db = new ShopContext();
@@ -113,7 +112,7 @@ namespace EAD2CA2_EFCore
             }
         }
 
-        // add a module, contains lecturerID
+        // add  clothes, contains sellerID
         public void AddClothe(Clothe clothe)
         {
             using ShopContext db = new ShopContext();
@@ -143,11 +142,11 @@ namespace EAD2CA2_EFCore
                 Seller aoc = new Seller() { Name = "Aaron", Location = "Naas", Rating = 4, ClothesSold = 40 };
                 repository.AddSeller(aoc);         // ID now assigned
 
-                // teaches 2 modules
+                // sells 2 clothes and 1 shoe
                 Clothe jeans = new Clothe() { Name = "Jeans", Price = 45, brandName = "Tommy Hilfiger", size = "M", colour = "navy", SellerID = aoc.ID };
                 Clothe tracksuit = new Clothe() { Name = "Tracksuits", Price = 30, brandName = "nike", size = "S", colour = "grey", SellerID = aoc.ID };
 
-                Clothe Shoes = new Clothe() { Name = "Shoes", Price = 80, brandName = "Converse", size = "7", colour = "white" };       // null for LecturerID
+                Clothe Shoes = new Clothe() { Name = "Shoes", Price = 80, brandName = "Converse", size = "7", colour = "white", SellerID = aoc.ID};       // null for LecturerID
 
                 repository.AddClothe(jeans);
                 repository.AddClothe(tracksuit);
