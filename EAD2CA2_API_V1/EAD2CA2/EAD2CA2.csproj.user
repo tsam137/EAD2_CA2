@@ -11,5 +11,10 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_DbContextTypeFullName>EAD2CA2.Data.EAD2CA2Context</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
+    <NameOfLastUsedPublishProfile>C:\Users\tobas\OneDrive\TUD T\EAD2\EAD2_CA2\EAD2CA2_API_V1\EAD2CA2\Properties\PublishProfiles\EAD2CA2API - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
+    <ActiveDebugProfile>EAD2CA2</ActiveDebugProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

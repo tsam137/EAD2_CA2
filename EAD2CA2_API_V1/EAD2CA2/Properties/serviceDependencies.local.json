@@ -3,6 +3,9 @@
     "mssql1": {
       "type": "mssql.local",
       "connectionId": "EAD2CA2Context"
+    },
+    "secrets1": {
+      "type": "secrets.user"
     }
   }
 }

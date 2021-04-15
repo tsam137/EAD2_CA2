@@ -268,3 +268,5 @@ C:\Users\tobas\OneDrive\TUD T\EAD2\EAD2_CA2\EAD2CA2_API_V1\EAD2CA2\obj\Debug\net
 C:\Users\tobas\OneDrive\TUD T\EAD2\EAD2_CA2\EAD2CA2_API_V1\EAD2CA2\obj\Debug\net5.0\ref\EAD2CA2.dll
 C:\Users\tobas\OneDrive\TUD T\EAD2\EAD2_CA2\EAD2CA2_API_V1\EAD2CA2\obj\Debug\net5.0\EAD2CA2.pdb
 C:\Users\tobas\OneDrive\TUD T\EAD2\EAD2_CA2\EAD2CA2_API_V1\EAD2CA2\obj\Debug\net5.0\EAD2CA2.genruntimeconfig.cache
+C:\Users\tobas\OneDrive\TUD T\EAD2\EAD2_CA2\EAD2CA2_API_V1\EAD2CA2\bin\Debug\net5.0\Connected Services\MyService\ConnectedService.json
+C:\Users\tobas\OneDrive\TUD T\EAD2\EAD2_CA2\EAD2CA2_API_V1\EAD2CA2\bin\Debug\net5.0\Connected Services\MyService\MyService.nswag.json

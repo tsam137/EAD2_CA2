@@ -3,6 +3,9 @@
     "mssql1": {
       "type": "mssql",
       "connectionId": "EAD2CA2Context"
+    },
+    "secrets1": {
+      "type": "secrets"
     }
   }
 }

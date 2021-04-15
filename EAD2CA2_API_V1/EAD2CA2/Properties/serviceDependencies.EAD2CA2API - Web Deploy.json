@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/sswd-db2/databases/EAD2CA2",
+      "type": "mssql.azure",
+      "connectionId": "EAD2CA2Context",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}
