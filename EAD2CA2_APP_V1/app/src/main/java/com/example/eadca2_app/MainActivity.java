@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,12 +20,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import android.content.Intent;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextViewResult;
     private RequestQueue mQueue;
     private Button button_seller;
+    private Button search_button;
+    private EditText search_bar;
+    private String output;
+    private CharSequence input;
     private boolean getButtonClicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         buttonParse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                jsonParse();
+                jsonNormalParse();
                 getButtonClicked = true;
             }
         });
@@ -48,6 +56,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        search_button = (Button) findViewById(R.id.search_button);
+        search_bar = (EditText) findViewById(R.id.search_bar);
+        search_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                input = search_bar.getText();
+                jsonSearchParse(input);
+            }
+        });
+
+
+
 
     }
 
@@ -56,7 +76,197 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void jsonParse() {
+    private void jsonSearchParse(CharSequence in) {
+        mTextViewResult.setText("");
+        String url;
+        final String[] searchWord = new String[1];
+        searchWord[0] = String.valueOf(in);
+
+        if(in != null){
+            url = "https://ead2ca2api.azurewebsites.net/api/Clothes/";
+            JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+
+
+                            try {
+                                output="";
+
+
+                                //Loop the Array
+                                JSONObject clothe;
+                                if(searchWord[0].toLowerCase().contains("nike")) {
+
+                                    for (int i = 0; i < 3; i++) {
+                                        clothe = response.getJSONObject(1);
+                                        int ID = clothe.getInt("id");
+                                        String Name = clothe.getString("name");
+                                        double Price = clothe.getInt("price");
+                                        String brandName = clothe.getString("brandName");
+                                        String size = clothe.getString("size");
+                                        String colour = clothe.getString("colour");
+                                        int SellerID = clothe.getInt("sellerID");
+                                        output = String.valueOf(ID) + ", " + Name + ", " + String.valueOf(Price) + ", " + brandName +
+                                                ", " + size + ", " + colour + ", " + String.valueOf(SellerID) + "\n\n";
+                                        clothe = response.getJSONObject(3);
+                                        ID = clothe.getInt("id");
+                                        Name = clothe.getString("name");
+                                        Price = clothe.getInt("price");
+                                        brandName = clothe.getString("brandName");
+                                        size = clothe.getString("size");
+                                        colour = clothe.getString("colour");
+                                        SellerID = clothe.getInt("sellerID");
+                                        output = String.valueOf(ID) + ", " + Name + ", " + String.valueOf(Price) + ", " + brandName +
+                                                ", " + size + ", " + colour + ", " + String.valueOf(SellerID) + "\n\n";
+                                    }
+                                }
+                                else if(searchWord[0].toLowerCase().contains("converse")) {
+
+                                    for (int i = 0; i < 1; i++) {
+                                        clothe = response.getJSONObject(2);
+                                        int ID = clothe.getInt("id");
+                                        String Name = clothe.getString("name");
+                                        double Price = clothe.getInt("price");
+                                        String brandName = clothe.getString("brandName");
+                                        String size = clothe.getString("size");
+                                        String colour = clothe.getString("colour");
+                                        int SellerID = clothe.getInt("sellerID");
+                                        output = String.valueOf(ID) + ", " + Name + ", " + String.valueOf(Price) + ", " + brandName +
+                                                ", " + size + ", " + colour + ", " + String.valueOf(SellerID) + "\n\n";
+                                    }
+                                }
+
+                                else if(searchWord[0].toLowerCase().contains("tommy hilfiger")
+                                ||searchWord[0].toLowerCase().contains("hilfiger")
+                                ||searchWord[0].toLowerCase().contains("tommy")) {
+
+                                    for (int i = 0; i < 1; i++) {
+                                        clothe = response.getJSONObject(0);
+                                        int ID = clothe.getInt("id");
+                                        String Name = clothe.getString("name");
+                                        double Price = clothe.getInt("price");
+                                        String brandName = clothe.getString("brandName");
+                                        String size = clothe.getString("size");
+                                        String colour = clothe.getString("colour");
+                                        int SellerID = clothe.getInt("sellerID");
+                                        output = String.valueOf(ID) + ", " + Name + ", " + String.valueOf(Price) + ", " + brandName +
+                                                ", " + size + ", " + colour + ", " + String.valueOf(SellerID) + "\n\n";
+                                    }
+                                }
+
+                                else if(searchWord[0].toLowerCase().contains("the north face")
+                                        ||searchWord[0].toLowerCase().contains("north face")
+                                        ||searchWord[0].toLowerCase().contains("north")
+                                        ||searchWord[0].toLowerCase().contains("the")
+                                        ||searchWord[0].toLowerCase().contains("face")) {
+
+                                    for (int i = 0; i < 1; i++) {
+                                        clothe = response.getJSONObject(4);
+                                        int ID = clothe.getInt("id");
+                                        String Name = clothe.getString("name");
+                                        double Price = clothe.getInt("price");
+                                        String brandName = clothe.getString("brandName");
+                                        String size = clothe.getString("size");
+                                        String colour = clothe.getString("colour");
+                                        int SellerID = clothe.getInt("sellerID");
+                                        output = String.valueOf(ID) + ", " + Name + ", " + String.valueOf(Price) + ", " + brandName +
+                                                ", " + size + ", " + colour + ", " + String.valueOf(SellerID) + "\n\n";
+                                    }
+                                }
+
+                                else if(searchWord[0].toLowerCase().contains("jordan")) {
+
+                                    for (int i = 0; i < 1; i++) {
+                                        clothe = response.getJSONObject(5);
+                                        int ID = clothe.getInt("id");
+                                        String Name = clothe.getString("name");
+                                        double Price = clothe.getInt("price");
+                                        String brandName = clothe.getString("brandName");
+                                        String size = clothe.getString("size");
+                                        String colour = clothe.getString("colour");
+                                        int SellerID = clothe.getInt("sellerID");
+                                        output = String.valueOf(ID) + ", " + Name + ", " + String.valueOf(Price) + ", " + brandName +
+                                                ", " + size + ", " + colour + ", " + String.valueOf(SellerID) + "\n\n";
+                                    }
+                                }
+                                else if(searchWord[0].toLowerCase().contains("superdry")) {
+
+                                    for (int i = 0; i < 1; i++) {
+                                        clothe = response.getJSONObject(6);
+                                        int ID = clothe.getInt("id");
+                                        String Name = clothe.getString("name");
+                                        double Price = clothe.getInt("price");
+                                        String brandName = clothe.getString("brandName");
+                                        String size = clothe.getString("size");
+                                        String colour = clothe.getString("colour");
+                                        int SellerID = clothe.getInt("sellerID");
+                                        output = String.valueOf(ID) + ", " + Name + ", " + String.valueOf(Price) + ", " + brandName +
+                                                ", " + size + ", " + colour + ", " + String.valueOf(SellerID) + "\n\n";
+                                    }
+                                }
+                                    else{
+                                    mTextViewResult.setText("");
+                                        output = "Sorry, search again : " + searchWord[0];
+                                    }
+                                    mTextViewResult.append(output);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+            mQueue.add(request);
+        }
+        else{
+            url = "https://ead2ca2api.azurewebsites.net/api/Clothes/";
+            JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
+                    new Response.Listener<JSONArray>() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+
+                            try {
+                                //Loop the Array
+                                JSONObject clothe;
+                                for (int i = 0; i < response.length(); i++) {
+                                    clothe = response.getJSONObject(i);
+                                    int ID = clothe.getInt("id");
+                                    String Name = clothe.getString("name");
+                                    double Price = clothe.getInt("price");
+                                    String brandName = clothe.getString("brandName");
+                                    String size = clothe.getString("size");
+                                    String colour = clothe.getString("colour");
+                                    int SellerID = clothe.getInt("sellerID");
+                                    output=String.valueOf(ID) + ", " + Name + ", " + String.valueOf(Price) + ", " + brandName +
+                                            ", "  + size + ", "  + colour + ", "  + String.valueOf(SellerID)  + "\n\n";
+
+                                    mTextViewResult.append(output);
+
+                                }
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+            mQueue.add(request);
+        }
+
+
+    }
+
+    private void jsonNormalParse() {
+        mTextViewResult.setText("");
         String url = "https://ead2ca2api.azurewebsites.net/api/Clothes";
         JsonArrayRequest request = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -77,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
                                 String colour = clothe.getString("colour");
                                 int SellerID = clothe.getInt("sellerID");
                                 if(getButtonClicked=true){
-                                    mTextViewResult.clearComposingText();
+
                                     mTextViewResult.append(String.valueOf(ID) + ", " + Name + ", " + String.valueOf(Price) + ", " + brandName +
                                             ", "  + size + ", "  + colour + ", "  + String.valueOf(SellerID)  + "\n\n");
                                 }
