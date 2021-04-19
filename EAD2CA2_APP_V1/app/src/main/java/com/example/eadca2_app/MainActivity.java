@@ -137,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //This is the get method but it is for searches
     private void jsonSearchParse(CharSequence in) {
         mTextViewResult.setText("");
         String url;
