@@ -2,15 +2,21 @@ package com.example.eadca2_app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,10 +28,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Locale;
+
 
 public class SellerActivity extends AppCompatActivity {
-
+    //Variables for the program
     private TextView mTextViewResult;
+    public static final String[] languages ={"Lang","Eng","Ger"};
     private RequestQueue mQueue;
     private boolean getButtonClicked = false;
     private FloatingActionButton  backButton;
@@ -33,6 +42,8 @@ public class SellerActivity extends AppCompatActivity {
     private EditText search_bar;
     private CharSequence input;
     private String  output;
+
+    //Method that is called when activity is created
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,13 +59,16 @@ public class SellerActivity extends AppCompatActivity {
             }
         });
 
-        backButton = (FloatingActionButton ) findViewById(R.id.floatingActionButton);
+        //This assigns the ID of the back button to the variable
+        backButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openMainActivity();
             }
         });
+
+        //This assigns the ID of the search button to the variable
         search_button = (Button) findViewById(R.id.search_button2);
         search_bar = (EditText) findViewById(R.id.search_bar2);
         search_button.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +78,50 @@ public class SellerActivity extends AppCompatActivity {
                 jsonSearchParse(input);
             }
         });
+
+        ////This assigns the ID of the spinner to the spinner variable
+        Spinner spinner = (Spinner) findViewById(R.id.spinner2);
+        //This method allows me to set controls for when an item in the spinner is selected
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, languages);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setSelection(0);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedLang = adapterView.getItemAtPosition(i).toString();
+                if (selectedLang.equals("Eng")) {
+                    setLocal(SellerActivity.this, "en");
+                    buttonParse.setText("Show Clothes");
+                    search_button.setText("Search");
+                    search_bar.setHint("Search by Brand");
+                } else if (selectedLang.equals("Ger")) {
+                    setLocal(SellerActivity.this, "de");
+                    buttonParse.setText("TEST");
+                    buttonParse.setText("Kleidung Zeigen");
+                    search_button.setText("Suche");
+                    search_bar.setHint("Suche nach Marke ");
+                } else {
+                    Toast.makeText(SellerActivity.this, "Please select a Language", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+    }
+
+    public  void setLocal(Activity activity, String langCode){
+        Locale locale = new Locale(langCode);
+        locale.setDefault(locale);
+
+        Resources resources = activity.getResources();
+        Configuration config = resources.getConfiguration();
+        config.setLocale(locale);
+        resources.updateConfiguration(config,resources.getDisplayMetrics());
     }
 
     public void openMainActivity() {
@@ -71,6 +129,7 @@ public class SellerActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    //This method grabs the json as an array and converts and prints it out as an object
     private void jsonSearchParse(CharSequence in) {
         mTextViewResult.setText("");
         String url;

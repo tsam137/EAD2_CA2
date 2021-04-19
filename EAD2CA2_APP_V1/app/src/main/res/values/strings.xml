@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">EADCA2_APP</string>
+    <string name="app_name">weTrade</string>
+    <string name="searchText">Search by Brand</string>
+    <string name="searchButtonText">Search</string>
+    <string name="showClothesButton">Show Clothes</string>
+    <string name="nextPageButton">Seller Page</string>
+    <string name="languageSelected">EN</string>
 </resources>

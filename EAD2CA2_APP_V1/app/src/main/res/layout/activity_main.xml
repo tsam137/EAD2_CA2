@@ -26,9 +26,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="108dp"
+        android:layout_marginStart="116dp"
         android:layout_marginTop="508dp"
-        android:text="Show Clothes"
+        android:text="@string/showClothesButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="128dp"
         android:layout_marginTop="568dp"
-        android:text="Next Page"
+        android:text="@string/nextPageButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,8 +46,8 @@
         android:id="@+id/imageView"
         android:layout_width="180dp"
         android:layout_height="67dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/download" />
@@ -59,9 +59,19 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="152dp"
         android:ems="10"
-        android:hint="Search by Brand"
+        android:hint="@string/searchText"
         android:inputType="textPersonName"
         android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="109dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/languageSelected"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="260dp"
         android:layout_marginTop="156dp"
-        android:text="Search"
+        android:text="@string/searchButtonText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
